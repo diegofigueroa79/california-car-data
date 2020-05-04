@@ -6,14 +6,21 @@ def download_pdf(url_string):
 
 	doc = requests.get(url)
 	
-	"""if doc.status_code == 200:
+	if doc.status_code == 200:
 		with open('car_data.pdf', 'wb') as file:
 			file.write(doc.content)
 		return doc
 	else:
 		print("HTTP Response Status Code: " + str(doc.status_code))
-		"""
-	return doc
+		
+	#return doc
+
+def extract_text(pdf_path):
+
+	pdfFileObj = open(pdf_path, 'rb')
+	pdfReader_obj = pypdf.PdfFileReader(pdfFileObj)
+	
+	return pdfReader_obj
 
 if __name__ == '__main__':
 	
